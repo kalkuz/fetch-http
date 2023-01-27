@@ -1,0 +1,16 @@
+{
+  "name": "fetch-http",
+  "version": "0.1.0",
+  "description": "A library that provides shortcuts for http requests",
+  "main": "index.js",
+  "author": "Oğuzhan Kalkuz",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
