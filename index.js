@@ -19,7 +19,7 @@ async function Handler(res) {
   if (!res.ok) {
     throw json;
   } else {
-    return res;
+    return json;
   }
 }
 
