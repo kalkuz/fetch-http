@@ -1,6 +1,6 @@
 {
   "name": "fetch-http",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A library that provides shortcuts for http requests",
   "main": "index.js",
   "author": "Oğuzhan Kalkuz",
