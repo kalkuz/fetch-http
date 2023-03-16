@@ -1,5 +1,5 @@
 {
-  "name": "fetch-http",
+  "name": "@kalkuz/fetch-http",
   "version": "0.1.1",
   "description": "A library that provides shortcuts for http requests",
   "main": "index.js",
