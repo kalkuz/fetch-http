@@ -1,6 +1,10 @@
 {
   "name": "@kalkuz/fetch-http",
-  "version": "0.1.1",
+  "version": "0.1.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kalkuz/fetch-http"
+  },
   "description": "A library that provides shortcuts for http requests",
   "main": "index.js",
   "author": "Oğuzhan Kalkuz",
