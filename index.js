@@ -5,7 +5,7 @@ const config = {
 
 function HeaderBuilder(header, body) {
   const headers = {
-    ...{ header },
+    ...header,
     ...(body ? { 'Content-Type': 'application/json' } : null),
     ...(config.getAuthorization() ? { authorization: config.getAuthorization() } : null),
   };
