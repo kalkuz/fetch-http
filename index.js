@@ -23,35 +23,35 @@ async function Handler(res) {
   }
 }
 
-export async function Get(endpoint, header = null, optionalApiAddress = null) {
+async function Get(endpoint, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'GET', headers: HeaderBuilder(header) })
     .then(Handler);
 }
 
-export async function Post(endpoint, body, header = null, optionalApiAddress = null) {
+async function Post(endpoint, body, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'POST', body: JSON.stringify(body), headers: HeaderBuilder(header, body) })
     .then(Handler);
 }
 
-export async function Patch(endpoint, body, header = null, optionalApiAddress = null) {
+async function Patch(endpoint, body, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'PATCH', body: JSON.stringify(body), headers: HeaderBuilder(header, body) })
     .then(Handler);
 }
 
-export async function Put(endpoint, body, header = null, optionalApiAddress = null) {
+async function Put(endpoint, body, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'PUT', body: JSON.stringify(body), headers: HeaderBuilder(header, body) })
     .then(Handler);
 }
 
-export async function Delete(endpoint, body, header = null, optionalApiAddress = null) {
+async function Delete(endpoint, body, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'DELETE', body: JSON.stringify(body), headers: HeaderBuilder(header, body) })
@@ -63,4 +63,11 @@ function Configurate(api = '', getAuthorization = () => '') {
   config.getAuthorization = getAuthorization;
 }
 
-export default { Configurate };
+module.exports = {
+  Get,
+  Post,
+  Patch,
+  Put,
+  Delete,
+  default: Configurate,
+};
