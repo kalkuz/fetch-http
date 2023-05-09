@@ -23,35 +23,35 @@ async function Handler(res) {
   }
 }
 
-async function Get(endpoint, header = null, optionalApiAddress = null) {
+export async function Get(endpoint, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'GET', headers: HeaderBuilder(header) })
     .then(Handler);
 }
 
-async function Post(endpoint, body, header = null, optionalApiAddress = null) {
+export async function Post(endpoint, body, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'POST', body: JSON.stringify(body), headers: HeaderBuilder(header, body) })
     .then(Handler);
 }
 
-async function Patch(endpoint, body, header = null, optionalApiAddress = null) {
+export async function Patch(endpoint, body, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'PATCH', body: JSON.stringify(body), headers: HeaderBuilder(header, body) })
     .then(Handler);
 }
 
-async function Put(endpoint, body, header = null, optionalApiAddress = null) {
+export async function Put(endpoint, body, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'PUT', body: JSON.stringify(body), headers: HeaderBuilder(header, body) })
     .then(Handler);
 }
 
-async function Delete(endpoint, body, header = null, optionalApiAddress = null) {
+export async function Delete(endpoint, body, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'DELETE', body: JSON.stringify(body), headers: HeaderBuilder(header, body) })
@@ -63,11 +63,4 @@ function Configurate(api = '', getAuthorization = () => '') {
   config.getAuthorization = getAuthorization;
 }
 
-module.exports = {
-  Get,
-  Post,
-  Patch,
-  Put,
-  Delete,
-  default: Configurate,
-};
+export default { Configurate };
