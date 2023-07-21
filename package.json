@@ -10,6 +10,7 @@
   },
   "description": "A library that provides shortcuts for http requests",
   "main": "build.js",
+  "module": "index.js",
   "author": "Oğuzhan Kalkuz",
   "license": "MIT",
   "devDependencies": {
