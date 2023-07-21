@@ -1,9 +1,14 @@
-const config = {
+interface Config {
+  api: string;
+  getAuthorization: () => string;
+}
+
+const config: Config = {
   api: '',
   getAuthorization: () => '',
 };
 
-function HeaderBuilder(header, body) {
+function HeaderBuilder(header: object | null, body: object | string | null = null) : HeadersInit {
   const headers = {
     ...header,
     ...(body ? { 'Content-Type': 'application/json' } : null),
@@ -13,7 +18,7 @@ function HeaderBuilder(header, body) {
   return headers;
 }
 
-async function Handler(res) {
+async function Handler(res: Response) {
   const json = await res.json();
 
   if (!res.ok) {
@@ -23,42 +28,42 @@ async function Handler(res) {
   }
 }
 
-export async function Get(endpoint, header = null, optionalApiAddress = null) {
+export async function Get(endpoint: string, header: object | null = null, optionalApiAddress: string | null = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'GET', headers: HeaderBuilder(header) })
     .then(Handler);
 }
 
-export async function Post(endpoint, body, header = null, optionalApiAddress = null) {
+export async function Post(endpoint: string, body: object | string | null, header: object | null = null, optionalApiAddress: object | null = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'POST', body: JSON.stringify(body), headers: HeaderBuilder(header, body) })
     .then(Handler);
 }
 
-export async function Patch(endpoint, body, header = null, optionalApiAddress = null) {
+export async function Patch(endpoint: string, body: object | string | null, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'PATCH', body: JSON.stringify(body), headers: HeaderBuilder(header, body) })
     .then(Handler);
 }
 
-export async function Put(endpoint, body, header = null, optionalApiAddress = null) {
+export async function Put(endpoint: string, body: object | string | null, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'PUT', body: JSON.stringify(body), headers: HeaderBuilder(header, body) })
     .then(Handler);
 }
 
-export async function Delete(endpoint, body, header = null, optionalApiAddress = null) {
+export async function Delete(endpoint: string, body: object | string | null, header = null, optionalApiAddress = null) {
   const address = `${optionalApiAddress || config.api}${endpoint}`;
 
   return fetch(address, { method: 'DELETE', body: JSON.stringify(body), headers: HeaderBuilder(header, body) })
     .then(Handler);
 }
 
-function Configurate(api = '', getAuthorization = () => '') {
+function Configurate(api: string = '', getAuthorization: () => string = () => '') {
   config.api = api;
   config.getAuthorization = getAuthorization;
 }
